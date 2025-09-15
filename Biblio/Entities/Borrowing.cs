@@ -6,13 +6,13 @@ public class Borrowing
 {
     public int ID { get; set; }   // PK
 
-    [ForeignKey("Book")]
-    public int BookID { get; set; }   // FK => Book table
-    //public Book Book { get; set; }
+    [ForeignKey("User")]
+    public int UserID { get; set; }   // FK → User
+    public User User { get; set; }
 
-    [ForeignKey("Visitor")]
-    public int VisitorID { get; set; }   // FK => Visitor table
-    //public Visitor Visitor { get; set; }
+    [ForeignKey("Book")]
+    public int BookID { get; set; }   // FK => Book
+    //public Book Book { get; set; }
 
     public double? FineAmount { get; set; }
 
@@ -25,9 +25,4 @@ public class Borrowing
     public BorrowingStatus Status { get; set; }
 }
 
-public enum BorrowingStatus
-{
-    Borrowed,
-    Returned,
-    Overdue
-}
+public enum BorrowingStatus { Borrowed, Returned, Overdue }

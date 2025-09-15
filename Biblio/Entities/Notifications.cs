@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 public class Notification
 {
-    [Key]
     public int NotificationID { get; set; }   // PK
 
     
