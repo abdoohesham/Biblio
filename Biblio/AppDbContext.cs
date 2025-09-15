@@ -4,6 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 public class AppDbContext : DbContext
 {
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer(
+                "Server=ABDO_HESHAM\\SQLSERVER2022 ;Database=Biblio ;Trusted_Connection=True ;TrustServerCertificate=True ;");
+        }
+    }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // User => Borrowing (1-to-many)
@@ -14,7 +22,7 @@ public class AppDbContext : DbContext
 
         // User => Notification (1-to-many)
         //modelBuilder.Entity<Notification>()
-        //    .HasOne(n => n.User)
+        //    .HasOne(n => n.VisitorID)
         //    .WithMany(u => u.Notifications)
         //    .HasForeignKey(n => n.UserID)
         //    .OnDelete(DeleteBehavior.Cascade);
